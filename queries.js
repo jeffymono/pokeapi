@@ -7,6 +7,7 @@ const pool = new Pool({
   database: "dfs3prc4ho99qo",
   password: "07d6e34e713f4cfd5dd1961f5dcc914d560d46535e399f51877022584b724146",
   port: 5432,
+  SSL: true,
 });
 
 const getPokemones = (request, response) => {
