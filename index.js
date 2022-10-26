@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const db = require("./queries");
 const config = require("./settings");
-const port = config.PORT;
+const port = process.env.PORT || config.PORT;
 
 // Ruta inicial de la api
 app.get("/", (request, response) => {

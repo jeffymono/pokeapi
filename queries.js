@@ -1,6 +1,6 @@
 const Pool = require("pg").Pool;
 const config = require("./settings");
-const port = config.PORT;
+const port = process.env.PORT || config.PORT;
 const pool = new Pool({
   user: "postgres",
   host: "localhost",

@@ -1,3 +1,3 @@
 // El puerto que uso para levantar mi app
-const PORT = 1337;
+const PORT = 8080;
 module.exports = { PORT };
