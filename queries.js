@@ -1,12 +1,11 @@
 const Pool = require("pg").Pool;
 const config = require("./settings");
 const port = process.env.PORT || config.PORT;
-const pool = new Pool({
-  user: "uuuvtuaepgnzxw",
-  host: "ec2-54-163-34-107.compute-1.amazonaws.com",
-  database: "dfs3prc4ho99qo",
-  password: "07d6e34e713f4cfd5dd1961f5dcc914d560d46535e399f51877022584b724146",
-  port: 5432,
+const connectionString =
+  "postgresql://uuuvtuaepgnzxw:07d6e34e713f4cfd5dd1961f5dcc914d560d46535e399f51877022584b724146@ec2-54-163-34-107.compute-1.amazonaws.com:5432/dfs3prc4ho99qo";
+
+const client = new Pool({
+  connectionString: connectionString,
 });
 
 const getPokemones = (request, response) => {
