@@ -1,6 +1,7 @@
 const Pool = require("pg").Pool;
 const config = require("./settings");
-const port = process.env.PORT || config.PORT;
+const port =
+  process.env.PORT != null || process.env.PORT != undefined ? "" : config.PORT;
 const pool = new Pool({
   user: "uuuvtuaepgnzxw",
   host: "ec2-54-163-34-107.compute-1.amazonaws.com",
