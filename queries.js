@@ -23,7 +23,9 @@ const getPokemones = (request, response) => {
       const protocol = request.protocol;
       const host = request.hostname;
       const url = request.originalUrl;
-      const fullUrl = `${protocol}://${host}:${port}${url}`;
+      const fullUrl = `${protocol}://${host}${
+        port != "" ? ":" + port : port
+      }${url}`;
 
       const data = results.rows.map((elemento) => {
         elemento.url = fullUrl + "/" + elemento.PokemonID;
