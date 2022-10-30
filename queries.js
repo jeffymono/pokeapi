@@ -15,7 +15,7 @@ const pool = new Pool({
 
 const getPokemones = (request, response) => {
   pool.query(
-    `SELECT "PokemonID","Nombre" FROM public."Pokemon" ORDER BY "Nombre"`,
+    `SELECT "PokemonID","Nombre" FROM public."Pokemon" ORDER BY "PokemonID"`,
     (error, results) => {
       if (error) {
         throw error;
