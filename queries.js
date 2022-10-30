@@ -58,7 +58,7 @@ const getPokemonesBusqueda = (request, response) => {
       const url = request.originalUrl;
       const fullUrl = `${protocol}://${host}${
         port != "" ? ":" + port : port
-      }/api/v2/pokemon/buscar`;
+      }/api/v2/pokemon`;
 
       const data = results.rows.map((elemento) => {
         elemento.url = fullUrl + "/" + elemento.PokemonID;
