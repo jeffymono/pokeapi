@@ -48,7 +48,7 @@ const getPokemonesBusqueda = (request, response) => {
             WHERE ` +
       (typeof parametro == "number"
         ? `pok."PokemonID"= ${parametro}`
-        : `pok."Nombre" like '%${parametro.toLowerCase()}%'`),
+        : `LOWER(pok."Nombre") like '%${parametro.toLowerCase()}%'`),
     (error, results) => {
       if (error) {
         throw error;
@@ -86,7 +86,7 @@ const getPokemonById = (request, response) => {
             WHERE ` +
       (typeof parametro == "number"
         ? `pok."PokemonID"= ${parametro}`
-        : `pok."Nombre" = '${parametro.toLowerCase()}'`),
+        : `LOWER(pok."Nombre") = '${parametro.toLowerCase()}'`),
     (error, results) => {
       if (error) {
         throw error;
