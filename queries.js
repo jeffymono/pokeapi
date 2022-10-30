@@ -37,12 +37,45 @@ const getPokemones = (request, response) => {
   );
 };
 
+const getPokemonesBusqueda = (request, response) => {
+  // Obtengo el parametro si es id o nombre del pokemon
+  const parametro = parseInt(request.params.parametro)
+    ? parseInt(request.params.parametro)
+    : request.params.parametro;
+  pool.query(
+    `SELECT "PokemonID","Nombre"
+            FROM public."Pokemon" pok
+            WHERE ` +
+      (typeof parametro == "number"
+        ? `pok."PokemonID"= ${parametro}`
+        : `pok."Nombre" like '%${parametro.toLowerCase()}%'`),
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      const protocol = request.protocol;
+      const host = request.hostname;
+      const url = request.originalUrl;
+      const fullUrl = `${protocol}://${host}${
+        port != "" ? ":" + port : port
+      }/api/v2/pokemon/buscar`;
+
+      const data = results.rows.map((elemento) => {
+        elemento.url = fullUrl + "/" + elemento.PokemonID;
+        delete elemento.PokemonID;
+        return { ...elemento };
+      });
+      response.status(200).json({ results: data });
+    }
+  );
+};
+
 const getPokemonById = (request, response) => {
   // Obtengo el parametro si es id o nombre del pokemon
   const parametro = parseInt(request.params.parametro)
     ? parseInt(request.params.parametro)
     : request.params.parametro;
-  console.log(parametro);
+
   // Query de la base de datos
   pool.query(
     `SELECT pok."PokemonID", pok."Nombre", pok."Descripcion", pok."Peso", pok."Altura", pok."Imagen", evo."Nombre" Evolucion, evo."Imagen" ImagenEvolucion, tipo."Nombre" Tipo
@@ -114,4 +147,5 @@ const getPokemonById = (request, response) => {
 module.exports = {
   getPokemones,
   getPokemonById,
+  getPokemonesBusqueda,
 };

@@ -17,6 +17,7 @@ app.get("/", (request, response) => {
 // Mis rutas de las apis
 app.get("/api/v2/pokemon", db.getPokemones);
 app.get("/api/v2/pokemon/:parametro", db.getPokemonById);
+app.get("/api/v2/pokemon/buscar/:parametro", db.getPokemonesBusqueda);
 
 // Levanto mi app eb el puerto
 app.listen(port, () => {
