@@ -5,6 +5,8 @@ const db = require("./queries");
 const config = require("./settings");
 const port = process.env.PORT || config.PORT;
 
+// Habilito los CORS
+app.use(cors());
 // Ruta inicial de la api
 app.get("/", (request, response) => {
   response.json({
