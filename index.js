@@ -27,7 +27,7 @@ app.get("/", (request, response) => {
  *       - in: query
  *         schema:
  *           type: string
- *         description: Listado de pokemones
+ *         description: Listado de pokemones, no necesita parámetros
  *     responses:
  *       200:
  *         description: OK
