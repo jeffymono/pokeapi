@@ -2,6 +2,8 @@
 
 Esta Api Rest está realizada con las tecnologías: Node js, Express js, postgreSQL
 
+Link de la Api Rest desplegada en heroku: https://ecuapokeapi.herokuapp.com/
+
 ### Creación de base de datos en PostgreSQL
 
 Se diseñó y creó la base de datos en PostgreSQL.
@@ -23,5 +25,8 @@ Se instaló un controlador de nodejs para poder utilizar consultas de postgreSQL
 Se desarrolló 3 métodos GET:
 
 1. Método GET para devolver todos los pokemones de la base de datos.
+   LINK: https://ecuapokeapi.herokuapp.com/api/v2/pokemon
 2. Método GET para devolver un pokemon en específico filtrado por el id o nombre del pokemon.
+   LINK: https://ecuapokeapi.herokuapp.com/api/v2/pokemon/1
 3. Método GET para realizar búsqueda de pokemones mediante el nombre o el id
+   LINK: https://ecuapokeapi.herokuapp.com/api/v2/pokemon/buscar/bulbasaur
